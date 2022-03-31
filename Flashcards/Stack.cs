@@ -10,9 +10,14 @@ namespace Flashcards
     {
         public static List<Flashcard> flashcards { get; private set; }
 
-        public static List<Flashcard> GetFlashcards()
+        public static void GetFlashcards()
         {
-            return flashcards;
+            for(int i = 0; i < flashcards.Count; i++)
+            {
+                Console.WriteLine();
+                Console.Write(flashcards[i].Id + " "); Console.Write(flashcards[i].Text);
+                Console.WriteLine();
+            }
         }
 
         public static void PushCard(Flashcard newCard)
@@ -42,6 +47,17 @@ namespace Flashcards
             Flashcard topCard = flashcards[0];
             flashcards.RemoveAt(0);
             return topCard;
+        }
+
+        public static void DeleteFromStack()
+        {
+            int input = Convert.ToInt32(Console.ReadLine());
+            flashcards.RemoveAt(input - 1);
+
+            for(int i = 0; i < flashcards.Count; i++)
+            {
+                flashcards[i].Id = flashcards.IndexOf(flashcards[i]) + 1;
+            }
         }
 
         public static void ClearStack()
