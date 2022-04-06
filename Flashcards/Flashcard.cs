@@ -10,6 +10,7 @@ namespace Flashcards
     {
         public int Id { get; set; }
         public string Text { get; set; }
+        public string StackId { get; set; }
 
         public Flashcard()
         {
@@ -28,6 +29,9 @@ namespace Flashcards
             Text = input;
         }
 
-  
+        public void SetToStack(Stack stack)
+        {
+            StackId = stack.Name;
+        }
     }
 }

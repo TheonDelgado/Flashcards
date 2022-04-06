@@ -6,11 +6,17 @@ using System.Threading.Tasks;
 
 namespace Flashcards
 {
-    internal static class Stack
+    internal class Stack
     {
+        public string Name { get; set; }
         public static List<Flashcard> flashcards { get; private set; }
 
-        public static void GetFlashcards()
+        public Stack(string name)
+        {
+            Name = name;
+        }
+
+        public void GetFlashcards()
         {
             for(int i = 0; i < flashcards.Count; i++)
             {
@@ -20,7 +26,7 @@ namespace Flashcards
             }
         }
 
-        public static void PushCard(Flashcard newCard)
+        public void PushCard(Flashcard newCard)
         {
             if(flashcards == null)
             {
@@ -37,7 +43,7 @@ namespace Flashcards
             }
         }
 
-        public static Flashcard PopCard()
+        public Flashcard PopCard()
         {
             if (flashcards.Count <= 0)
             {
@@ -49,7 +55,7 @@ namespace Flashcards
             return topCard;
         }
 
-        public static void DeleteFromStack()
+        public void DeleteFromStack()
         {
             int input = Convert.ToInt32(Console.ReadLine());
             flashcards.RemoveAt(input - 1);
@@ -60,7 +66,7 @@ namespace Flashcards
             }
         }
 
-        public static void ClearStack()
+        public void ClearStack()
         {
             flashcards.Clear();
         }
