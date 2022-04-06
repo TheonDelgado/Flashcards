@@ -71,5 +71,36 @@ namespace Flashcards
             flashcards.Clear();
         }
 
+        public static void ManageCards(Stack stack)
+        {
+            Console.Clear();
+            Console.WriteLine("What would you like to do?\n\n\n");
+
+            Console.WriteLine("Press 'C' to create a new Flashcard\n");
+            Console.WriteLine("Press 'D' to delete a Flashcard from the stack");
+            Console.WriteLine("Press 'S' to show all Flashcards in the stack");
+
+            string input = Console.ReadLine().ToUpper();
+
+            switch (input)
+            {
+                case "C":
+                    var newCard = new Flashcard();
+                    newCard.SetText();
+                    stack.PushCard(newCard);
+                    break;
+
+                case "D":
+                    Console.WriteLine("What would you like to delete from the stack?");
+                    stack.GetFlashcards();
+                    stack.DeleteFromStack();
+                    break;
+
+                case "S":
+                    stack.GetFlashcards();
+                    Console.ReadLine();
+                    break;
+            }
+        }
     }
 }

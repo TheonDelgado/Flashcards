@@ -46,5 +46,28 @@ namespace Flashcards
                 }
             }
         }
+
+        public static Stack PickStack()
+        {
+            Console.WriteLine("What stack would you like to manage?\n");
+
+            for (int i = 0; i < Stacks.Count; i++)
+            {
+                Console.WriteLine();
+                Console.Write(Stacks[i].Name);
+                Console.WriteLine();
+            }
+
+            string input = Console.ReadLine();
+            Stack stack = null;
+            for (int i = 0; i < Stacks.Count; i++)
+            {
+                if (Stacks[i].Name == input)
+                {
+                    stack = Stacks[i];
+                }
+            }
+            return stack;
+        }
     }
 }
