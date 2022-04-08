@@ -10,6 +10,7 @@ namespace Flashcards
     {
         static void Main(string[] args)
         {
+            StackList.Stacks = new List<Stack>();
             while(true)
             {
                 MainMenu();
@@ -51,27 +52,31 @@ namespace Flashcards
             switch(input)
             {
                 case "C":
-                    CheckIfStacksListEmpty();
                     InstantiateStack();
                     break;
 
                 case "D":
+                    if(StackListIsEmpty()) return;  
                     StackList.DeleteStack();
                     break;
                 case "M":
+                    if(StackListIsEmpty()) return;
                     Stack stack = StackList.PickStack();
                     Stack.ManageCards(stack);
                     break;
 
             }
         }
-
-        private static void CheckIfStacksListEmpty()
+        static bool StackListIsEmpty()
         {
-            if (StackList.Stacks == null)
+            bool isEmpty = false;
+            if (StackList.Stacks.Count < 1)
             {
-                StackList.Stacks = new List<Stack>();
+                Console.WriteLine("There are no stacks!");
+                Console.ReadLine();
+                isEmpty = true;
             }
+            return isEmpty;
         }
 
         static void InstantiateStack()
