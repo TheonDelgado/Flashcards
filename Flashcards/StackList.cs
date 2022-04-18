@@ -27,6 +27,7 @@ namespace Flashcards
 
         public static void DeleteStack()
         {
+            Console.WriteLine("DELETE STACK\n\n");
             Console.WriteLine("What stack would you like to delete?\n");
 
             for (int i = 0; i < Stacks.Count; i++)

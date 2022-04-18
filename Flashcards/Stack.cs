@@ -55,6 +55,15 @@ namespace Flashcards
             return topCard;
         }
 
+        public static void InstantiateStack()
+        {
+            Console.WriteLine("CREATE STACK\n\n");
+            Console.WriteLine("What would you like the stack to be called?");
+            string name = Console.ReadLine();
+            var stack = new Stack(name);
+            StackList.AddToStacks(stack);
+        }
+
         public void DeleteFromStack()
         {
             int input = Convert.ToInt32(Console.ReadLine());

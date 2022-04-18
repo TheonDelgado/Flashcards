@@ -11,6 +11,7 @@ namespace Flashcards
         static void Main(string[] args)
         {
             StackList.Stacks = new List<Stack>();
+            DbManager.IntializeDatabase();
             while(true)
             {
                 MainMenu();
@@ -52,11 +53,13 @@ namespace Flashcards
             switch(input)
             {
                 case "C":
-                    InstantiateStack();
+                    Console.Clear();
+                    Stack.InstantiateStack();
                     break;
 
                 case "D":
-                    if(StackListIsEmpty()) return;  
+                    if(StackListIsEmpty()) return;
+                    Console.Clear();
                     StackList.DeleteStack();
                     break;
                 case "M":
@@ -78,15 +81,5 @@ namespace Flashcards
             }
             return isEmpty;
         }
-
-        static void InstantiateStack()
-        {
-            Console.WriteLine("What would you like the stack to be called?");
-            string name = Console.ReadLine();
-            var stack = new Stack(name);
-            StackList.AddToStacks(stack);
-        }
-
-        
     }
 }
